@@ -1,0 +1,66 @@
+<template>
+  <div class="hello">
+    <testA></testA>
+    <h2>status => {{ statusX }}</h2>
+    <h2>true 1 / false 2</h2>
+    {{ num }}
+    <h2>paramet</h2>
+    <button @click="changeEvent(true)">TTT</button>
+    <button @click="changeEvent(false)">FFF</button>
+    <h2>brother</h2>
+    <router-link to="./testb">bro</router-link>
+  </div>
+</template>
+
+<script>
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+import testA from './testA.vue'
+export default {
+  name: 'HelloWorld',
+  props: {
+    msg: String
+  },
+  components: {
+    testA
+  },
+  setup () {
+    const store = useStore()
+    console.log('vx', store.state.statusS)
+    const changeEvent = (aaa) => {
+      store.dispatch('getStatus', aaa)
+    }
+    const statusX = computed(() => store.state.statusS)
+    const num = computed(() => {
+      let result = 0
+      console.log('.value', statusX.value)
+      statusX.value === true ? result = 1 : result = 2
+
+      return result
+    })
+    return {
+      changeEvent,
+      num,
+      statusX
+    }
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss">
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+</style>
