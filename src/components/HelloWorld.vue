@@ -30,8 +30,8 @@ export default {
     const changeEvent = (aaa) => {
       store.dispatch('getStatus', aaa)
     }
-    const statusX = computed(() => store.state.statusS)
-    const num = computed(() => {
+    const statusX = computed(() => store.state.statusS) // computed 取 vuex state值
+    const num = computed(() => { // 有statusX 值 做 computed 判斷
       let result = 0
       console.log('.value', statusX.value)
       statusX.value === true ? result = 1 : result = 2

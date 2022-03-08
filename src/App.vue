@@ -2,9 +2,22 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
+    <testB></testB>
   </nav>
+  <p>test line</p>
+  <p></p>
+  <p></p>
   <router-view/>
 </template>
+
+<script>
+import testB from './components/testB.vue'
+export default {
+  components: {
+    testB
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
