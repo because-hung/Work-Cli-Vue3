@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
 import { useStore } from 'vuex'
 import testA from './testA.vue'
 export default {
@@ -30,13 +30,19 @@ export default {
     const changeEvent = (aaa) => {
       store.dispatch('getStatus', aaa)
     }
-    const statusX = computed(() => store.state.statusS) // computed 取 vuex state值
+    const sayHi = () => {
+      console.log('watch work')
+    }
+    const statusX = computed(() => store.state.statusS) // computed 取 vuex state值 -- 也可以換成 store.getters.statusV
     const num = computed(() => { // 有statusX 值 做 computed 判斷
       let result = 0
       console.log('.value', statusX.value)
       statusX.value === true ? result = 1 : result = 2
 
       return result
+    })
+    watch(num, () => {
+      sayHi()
     })
     return {
       changeEvent,
