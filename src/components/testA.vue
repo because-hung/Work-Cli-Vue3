@@ -8,5 +8,6 @@ import { useStore } from 'vuex'
 const store = useStore()
 const changeStatus = (bbb) => {
   store.dispatch('getStatus', bbb)
+  localStorage.setItem('ccc', bbb)
 }
 </script>

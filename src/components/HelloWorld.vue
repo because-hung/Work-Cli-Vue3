@@ -25,6 +25,8 @@ export default {
     testA
   },
   setup () {
+    const localVable = localStorage.getItem('ccc')
+    console.log('local', localVable)
     const store = useStore()
     console.log('vx', store.state.statusS)
     const changeEvent = (aaa) => {

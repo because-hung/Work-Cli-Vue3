@@ -9,5 +9,6 @@ import { useStore } from 'vuex'
 const store = useStore()
 const changeEve = (ccc) => {
   store.dispatch('getStatus', ccc)
+  localStorage.setItem('ccc', ccc)
 }
 </script>
