@@ -4,6 +4,8 @@
    <button @click="changeEve(false)">BBBFFF</button>
     <h2>vx:{{store.state.statusS}}</h2>
     <h3>test git</h3>
+    <h3>test git2</h3>
+    <h3>test git3</h3>
 </template>
 <script setup>
 import { useStore } from 'vuex'
