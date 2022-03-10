@@ -9,6 +9,7 @@
     <button @click="changeEvent(false)">FFF</button>
     <h2>brother</h2>
     <router-link to="./testb">bro</router-link>
+    <h1>main test rebase</h1>
   </div>
 </template>
 
