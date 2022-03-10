@@ -17,11 +17,7 @@
     <h2>tg2</h2>
     <h2>tg3</h2>
 
-    <h2>cherry pick test</h2>
-    <h2>cherry pick test2</h2>
-    <h2>cp???</h2>
-    <h2>sq1</h2>
-    <h2>rrrrr</h2>
+       <h2>sq1 tg1</h2>
 
   </div>
 </template>
