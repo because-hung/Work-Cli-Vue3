@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <testA></testA>
-    <h2>status => {{ statusX }}</h2>
+    <!-- <h2>status => {{ statusX }}</h2>
     <h2>true 1 / false 2</h2>
     {{ num }}
     <h2>paramet</h2>
@@ -11,7 +11,7 @@
     <router-link to="./testb">bro</router-link>
 
     <h1>main test rebase</h1>
-    <h2>main test rebase2</h2>
+    <h2>main test rebase2</h2> -->
 
     <h2>reset tg1</h2>
 
