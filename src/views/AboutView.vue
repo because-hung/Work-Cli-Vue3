@@ -4,6 +4,7 @@
   </div>
 </template>
 <script setup>
+import axios from 'axios'
 // restart
 const date = Date.now()
 const today = new Date(date)
@@ -16,34 +17,8 @@ console.log(twDate)
 const x = enDate - twDate
 console.log(x / 60 / 60 / 1000)
 
-const Ary = [1, 2, 3, 4, 5]
-
-Ary.splice(2, 1, 6)
-
-// 1, 2, 6, 4, 5
-console.log(Ary)
-
-// filter
-const aryId = [
-  {
-    id: 120258,
-    name: 'one'
-  },
-  {
-    id: 145885,
-    name: 'two'
-  },
-  {
-    id: 123586,
-    name: 'three'
-  },
-  {
-    id: 125546,
-    name: 'four'
-  }]
-
 const aryA = [
-  {
+  [{
     id: 123586,
     food: 'banana',
     name: 'Wang',
@@ -54,45 +29,84 @@ const aryA = [
     food: 'mmmana',
     name: 'watermenlon',
     num: 37
+  }],
+  [{
+    id: 358446,
+    food: 'anaddna',
+    name: 'Wadddng',
+    num: 14
   },
   {
-    id: 145885,
-    food: 'papaya',
-    name: 'TTT',
-    num: 25
+    id: 126225,
+    food: 'mmmana',
+    name: 'watnlon',
+    num: 34
+  }],
+  [{
+    id: 1257776,
+    food: 'bana',
+    name: 'ng',
+    num: 144
   },
   {
-    id: 125585,
-    food: 'apple',
-    name: 'WCgC',
-    num: 8
-  }
+    id: 1263448,
+    food: 'mmmana',
+    name: 'watermenlon',
+    num: 377
+  }],
+  [{
+    id: 125644,
+    food: 'ban',
+    name: 'Wg',
+    num: 14
+  },
+  {
+    id: 126555,
+    food: 'mna',
+    name: 'wrmenlon',
+    num: 55
+  }]
 ]
 
-const aryB = aryA.filter((item) => {
-  return item.num > 9
-})
-console.log(aryB)
-aryB.forEach((el) => {
-  aryId.forEach(it => {
-    if (el.id === it.id) {
-      console.log('match', it)
-      aryA.splice(aryA.indexOf(el), 1, it)
-      aryB.splice(aryB.indexOf(el), 1)
-    }
-  })
-})
-console.log('a', aryA)
-console.log('b', aryB)
-
-aryA.forEach(ita => {
-  aryB.forEach(itb => {
-    if (ita.id === itb.id) {
-      console.log(itb)
-      console.log(aryA)
-      aryA.splice(aryA.indexOf(ita), 1)
-    }
-  })
-})
 console.log(aryA)
+let bbb = []
+
+aryA.forEach((item) => {
+  console.log(item)
+  bbb = bbb.concat(item)
+  console.log(bbb)
+})
+
+console.log(bbb)
+
+var dayjs = require('dayjs')
+
+const timeA = dayjs()
+console.log(timeA)
+const timeB = dayjs().add(1, 'day')
+console.log(timeB)
+console.log(timeB < timeA)
+
+// restart
+
+// async function getApi () {
+//   const aab = await axios.get('https://jsonplaceholder.typicode.com/todos/1')
+//   return aab.data
+// }
+
+// const ccc = await getApi()
+// console.log(ccc)
+
+function getApi () {
+  return axios.get('https://jsonplaceholder.typicode.com/todos/1')
+    .then(response => {
+      return response.data
+    })
+    .catch(error => {
+      console.log(error)
+    })
+}
+
+const aaa = await getApi()
+console.log(aaa)
 </script>
