@@ -79,16 +79,20 @@ aryA.forEach((item) => {
 
 console.log(bbb)
 
-var dayjs = require('dayjs')
+const dayjs = require('dayjs')
 
 const timeA = dayjs()
 console.log(timeA)
 const timeB = dayjs().add(1, 'day')
 console.log(timeB)
-console.log(timeB < timeA)
+console.log(timeB - timeA) // 減法
 console.log(dayjs('2022-03-18T00:49:49+08:00')) // date
 console.log(dayjs()) // now
 console.log(dayjs().format()) // format
+
+const timeC = dayjs().format()
+console.log(timeC)
+console.log(dayjs(timeA.format()))
 
 // restart
 
