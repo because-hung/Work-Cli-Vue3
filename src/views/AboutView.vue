@@ -94,6 +94,17 @@ const timeC = dayjs().format()
 console.log(timeC)
 console.log(dayjs(timeA.format()))
 
+//err
+
+const getExpeiredMatch = (date) => {
+  const timeNow = dayjs()
+  const matchesTime = dayjs(date)
+  const secondOfDay = 86400000
+
+  timeNow - matchesTime > secondOfDay
+
+}
+
 // restart
 
 // async function getApi () {
