@@ -1,6 +1,5 @@
 <template>
   <div class="hello">
-    <testA></testA>
     <!-- <h2>status => {{ statusX }}</h2>
     <h2>true 1 / false 2</h2>
     {{ num }}
@@ -14,22 +13,40 @@
     <h2>main test rebase2</h2> -->
 
     <h2>reset tg1</h2>
+    <div class="timeout">
+     <h2>time </h2>
+     <h1>{{diffWithDay}} - {{ diffWithHour}} - {{ diffWithMM }} - <span v-if="diffWithSS < 10">0</span>{{ diffWithSS }}</h1>
+    </div>
+<ul v-for="(item, i) in data" :key="i">
+  <li>{{item.statusA}}</li>
+  <p></p>
+  <li>
+    TV:
+    <p></p>
+    <div class="box" v-if="item.youtube.video">red - {{item.youtube.video}}</div>
+<div class="box" v-if="item.youtube.Animation">green - {{item.youtube.Animation}}</div>
+<div class="box" v-if="item.videoStatus === 3">noth</div>
+  </li>
+  <li>狀態:{{item.videoStatus}}</li>
+</ul>
+
+    <div class="container" @click="alertA()">
+      <button @click.stop="alertB()">enter123</button>
+    </div>
 
   </div>
 </template>
 
 <script>
-import { computed, watch } from 'vue'
+import { computed, watch, ref } from 'vue'
 import { useStore } from 'vuex'
-import testA from './testA.vue'
+import dayjs from 'dayjs'
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
-  components: {
-    testA
-  },
+
   setup () {
     const localVable = localStorage.getItem('ccc')
     console.log('local', localVable)
@@ -52,10 +69,119 @@ export default {
     watch(num, () => {
       sayHi()
     })
+
+    const alertA = () => {
+      console.log('in')
+    }
+
+    const alertB = () => {
+      console.log('out')
+    }
+
+    const data = [
+      {
+        statusA: 'fixture',
+        youtube: {
+          id: '018856',
+          video: 'youtube.com',
+          statusB: 3
+        }
+      },
+      {
+        statusA: 'live',
+        youtube: {
+          id: '099856',
+          Animation: 'onepiece',
+          statusB: 3
+        }
+      },
+      {
+        statusA: 'other',
+        youtube: {
+          id: '018324',
+          statusB: 9
+        }
+      },
+      {
+        statusA: 'complete',
+        youtube: {
+          id: '016664',
+          statusB: 9
+        }
+      },
+      {
+        statusA: 'complete2',
+        youtube: {
+          id: '723324',
+          statusB: 9
+        }
+      }
+    ]
+    const TVSTAUST = {
+      VIDEO: 1,
+      ANIMAT: 2,
+      NOTHING: 3
+
+    }
+
+    console.log(TVSTAUST.VIDEO)
+
+    data.forEach((item) => {
+      const itYT = item.youtube
+      if (itYT.video === true) {
+        item.videoStatus = TVSTAUST.VIDEO
+      } else if (itYT.video === undefined && itYT.Animation === true) {
+        item.videoStatus = TVSTAUST.ANIMAT
+      } else if (itYT.video === undefined && itYT.Animation === undefined) {
+        item.videoStatus = TVSTAUST.NOTHING
+      }
+    })
+    const timeNow = dayjs()
+    console.log(timeNow)
+    const timeB = dayjs().add(2, 'day')
+    console.log(timeB)
+    let seconds = timeB.diff(timeNow)
+    console.log(seconds)
+    const tt = dayjs(seconds).get('hour')
+    console.log('tt', tt)
+    const diffWithDay = ref(Math.floor(seconds / (1000 * 60 * 60 * 24)))
+    const diffWithHour = ref(Math.floor((seconds / (1000 * 60 * 60) % 24)))
+    const diffWithMM = ref(Math.floor((seconds / 1000 / 60) % 60))
+    const diffWithSS = ref(Math.floor((seconds / 1000) % 60))
+
+    const endTime = () => {
+      seconds -= 4000
+      diffWithDay.value = Math.floor((seconds / (1000 * 60 * 60 * 24)))
+      diffWithHour.value = Math.floor((seconds / (1000 * 60 * 60) % 24))
+      diffWithMM.value = Math.floor((seconds / 1000 / 60) % 60)
+      diffWithSS.value = Math.floor((seconds / 1000) % 60)
+    }
+
+    setInterval(() => endTime(seconds), 1000)
+    console.log(diffWithHour)
+
+    // const Zero = (valueA) => {
+    //   let result = ''
+    //   if (valueA.value.toString().split('').length < 2) {
+    //     result = ('0' + valueA.value)
+    //   }
+    //   return Number(result)
+    // }
+    // watch(diffWithSS, () => {
+    //   console.log(Zero(diffWithSS))
+    //   diffWithSS.value = Zero(diffWithSS)
+    // })
     return {
       changeEvent,
       num,
-      statusX
+      statusX,
+      alertA,
+      alertB,
+      data,
+      diffWithMM,
+      diffWithSS,
+      diffWithHour,
+      diffWithDay
     }
   }
 }
@@ -76,5 +202,24 @@ li {
 }
 a {
   color: #42b983;
+}
+.container{
+  border: 3px black solid;
+  padding: 15px;
+  display: flex;
+  justify-content: end;
+  margin: 50px;
+}
+
+button{
+  width: 80px;
+  height: 80px;
+
+}
+
+.box{
+  width: 150px;
+  height: 100px;
+  font-size: 24px;
 }
 </style>

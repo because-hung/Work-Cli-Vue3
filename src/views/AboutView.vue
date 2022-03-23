@@ -4,7 +4,6 @@
   </div>
 </template>
 <script setup>
-import axios from 'axios'
 // restart
 const date = Date.now()
 const today = new Date(date)
@@ -94,17 +93,6 @@ const timeC = dayjs().format()
 console.log(timeC)
 console.log(dayjs(timeA.format()))
 
-//err
-
-const getExpeiredMatch = (date) => {
-  const timeNow = dayjs()
-  const matchesTime = dayjs(date)
-  const secondOfDay = 86400000
-
-  timeNow - matchesTime > secondOfDay
-
-}
-
 // restart
 
 // async function getApi () {
@@ -115,16 +103,4 @@ const getExpeiredMatch = (date) => {
 // const ccc = await getApi()
 // console.log(ccc)
 
-function getApi () {
-  return axios.get('https://jsonplaceholder.typicode.com/todos/1')
-    .then(response => {
-      return response.data
-    })
-    .catch(error => {
-      console.log(error)
-    })
-}
-
-const aaa = await getApi()
-console.log(aaa)
 </script>
