@@ -23,11 +23,12 @@
   <li>
     TV:
     <p></p>
-    <div class="box" v-if="item.youtube.video">red - {{item.youtube.video}}</div>
-<div class="box" v-if="item.youtube.Animation">green - {{item.youtube.Animation}}</div>
-<div class="box" v-if="item.videoStatus === 3">noth</div>
+       <div class="box" v-if="item.youtube.statusB !== 9 && item.youtube.video">red </div>
+<div class="box" v-if="item.youtube.statusB === 9 || (!item.youtube.video && item.youtube.Animation)">green </div>
+    <!-- <div class="box" v-if="comp(item) === 2">red </div>
+<div class="box" v-if="comp(item) === 3">green </div> -->
   </li>
-  <li>狀態:{{item.videoStatus}}</li>
+  <li>狀態:{{item.youtube.statusB}}</li>
 </ul>
 
     <div class="container" @click="alertA()">
@@ -84,6 +85,7 @@ export default {
         youtube: {
           id: '018856',
           video: 'youtube.com',
+          Animation: 'onepiece',
           statusB: 3
         }
       },
@@ -142,8 +144,6 @@ export default {
     console.log(timeB)
     let seconds = timeB.diff(timeNow)
     console.log(seconds)
-    const tt = dayjs(seconds).get('hour')
-    console.log('tt', tt)
     const diffWithDay = ref(Math.floor(seconds / (1000 * 60 * 60 * 24)))
     const diffWithHour = ref(Math.floor((seconds / (1000 * 60 * 60) % 24)))
     const diffWithMM = ref(Math.floor((seconds / 1000 / 60) % 60))
@@ -171,6 +171,17 @@ export default {
     //   console.log(Zero(diffWithSS))
     //   diffWithSS.value = Zero(diffWithSS)
     // })
+
+    const comp = (item) => {
+      if (item.youtube.statusB !== 9 && item.youtube.video) {
+        return 2
+      } else if (item.youtube.statusB === 9 || (!item.youtube.video && item.youtube.Animation)) {
+        return 3
+      } else {
+        return 0
+      }
+    }
+
     return {
       changeEvent,
       num,
@@ -181,7 +192,8 @@ export default {
       diffWithMM,
       diffWithSS,
       diffWithHour,
-      diffWithDay
+      diffWithDay,
+      comp
     }
   }
 }
