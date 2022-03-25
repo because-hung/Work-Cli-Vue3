@@ -142,23 +142,18 @@ export default {
     console.log(timeNow)
     const timeB = dayjs().add(2, 'day')
     console.log(timeB)
-    let seconds = timeB.diff(timeNow)
+    const seconds = ref(timeB.diff(timeNow))
     console.log(seconds)
-    const diffWithDay = ref(Math.floor(seconds / (1000 * 60 * 60 * 24)))
-    const diffWithHour = ref(Math.floor((seconds / (1000 * 60 * 60) % 24)))
-    const diffWithMM = ref(Math.floor((seconds / 1000 / 60) % 60))
-    const diffWithSS = ref(Math.floor((seconds / 1000) % 60))
+    const diffWithDay = computed(() => Math.floor(seconds.value / (1000 * 60 * 60 * 24)))
+    const diffWithHour = computed(() => Math.floor((seconds.value / (1000 * 60 * 60) % 24)))
+    const diffWithMM = computed(() => Math.floor((seconds.value / 1000 / 60) % 60))
+    const diffWithSS = computed(() => Math.floor((seconds.value / 1000) % 60))
 
     const endTime = () => {
-      seconds -= 4000
-      diffWithDay.value = Math.floor((seconds / (1000 * 60 * 60 * 24)))
-      diffWithHour.value = Math.floor((seconds / (1000 * 60 * 60) % 24))
-      diffWithMM.value = Math.floor((seconds / 1000 / 60) % 60)
-      diffWithSS.value = Math.floor((seconds / 1000) % 60)
+      seconds.value -= 1000
     }
 
     setInterval(() => endTime(seconds), 1000)
-    console.log(diffWithHour)
 
     // const Zero = (valueA) => {
     //   let result = ''
