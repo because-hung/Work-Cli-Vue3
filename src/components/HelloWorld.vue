@@ -151,10 +151,13 @@ export default {
 
     const endTime = () => {
       seconds.value -= 1000
+      console.log(seconds.value)
     }
 
-    setInterval(() => endTime(seconds), 1000)
-
+    const stop = setInterval(() => endTime(seconds), 1000)
+    setTimeout(() => {
+      clearInterval(stop)
+    }, 5000)
     // const Zero = (valueA) => {
     //   let result = ''
     //   if (valueA.value.toString().split('').length < 2) {
