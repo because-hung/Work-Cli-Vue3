@@ -4,7 +4,21 @@
   </div>
 </template>
 <script setup>
-import axios from 'axios'
+import { onMounted, ref } from 'vue'
+// import axios from 'axios'
+import { fetchFakeApi } from '../../api/fakeApi'
+
+const data = ref([])
+
+onMounted(() => {
+  fetchFakeApi().then((res) => {
+    console.log('res', res)
+    data.value = res.data.columns
+  })
+})
+
+console.log('ref data', data.value)
+
 // restart
 // const date = Date.now()
 // const today = new Date(date)
@@ -94,29 +108,29 @@ console.log(timeA)
 
 // restart
 
-const startTime = dayjs()
-let count = 0
+// const startTime = dayjs()
+// let count = 0
 
-function getApi () {
-  console.log('123')
-  axios.get('https://jsonplaceholder.typicode.com/todos/1')
-    .then((res) => { console.log(res.data) })
-    .catch((error) => { console.error(error) })
-}
+// function getApi () {
+//   console.log('123')
+//   axios.get('https://jsonplaceholder.typicode.com/todos/1')
+//     .then((res) => { console.log(res.data) })
+//     .catch((error) => { console.error(error) })
+// }
 
-getApi()
+// getApi()
 
-setInterval(() => getApi(), 30000)
+// setInterval(() => getApi(), 30000)
 
-const fixed = () => {
-  count++
-  const aaa = (dayjs() - (startTime + count * 1000))
-  console.log(aaa)
-  let nextTime = 1000 - aaa
-  if (aaa < 0) {
-    nextTime = 0
-  }
-  setTimeout(fixed, nextTime)
-}
-setTimeout(fixed, 1000)
+// const fixed = () => {
+//   count++
+//   const aaa = (dayjs() - (startTime + count * 1000))
+//   console.log(aaa)
+//   let nextTime = 1000 - aaa
+//   if (aaa < 0) {
+//     nextTime = 0
+//   }
+//   setTimeout(fixed, nextTime)
+// }
+// setTimeout(fixed, 1000)
 </script>
