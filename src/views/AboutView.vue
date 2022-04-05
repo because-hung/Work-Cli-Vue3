@@ -1,6 +1,21 @@
 <template>
   <div class="about">
+    <ul v-for="(item, i) in data" :key="i">
+      <li :id="`${item.name}`">{{ item.name }}</li>
+      <li><iframe width="560" height="315" :src="item.video" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></li>
+    </ul>
     <h1>This is an about page</h1>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Y65kO3YcXFk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div id="one" class="box">111</div>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni quae at sed consectetur nulla, saepe ut deleniti voluptatum magnam, libero, adipisci doloribus accusantium voluptas reiciendis distinctio officiis modi? At quas beatae vitae distinctio consectetur, ullam inventore assumenda voluptatum nemo id. Possimus corrupti perspiciatis in ullam excepturi ex unde placeat ab necessitatibus cumque exercitationem, iusto nam provident rem a accusantium sed fugit itaque iste nisi? Rem voluptatem pariatur inventore repellendus architecto, quo accusamus veritatis laboriosam impedit cum atque, odio possimus facilis eum saepe libero consequatur? Tempore sunt nobis obcaecati eius dicta omnis ea deleniti voluptatibus ex, ad perferendis, enim voluptates expedita.
+  </p>
+  <div id="two" class="box">222</div>
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi nihil, ab ratione molestias repellat voluptatibus qui eligendi aspernatur ad aperiam deserunt! Minus laboriosam totam impedit adipisci commodi laudantium sunt, provident facere corporis eligendi quidem quis ratione doloribus ipsam dicta, nostrum vero, quas ex cupiditate sed. Accusamus accusantium sunt obcaecati maxime.</p>
+  <div id="three" class="box">333</div>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur quo quod aspernatur possimus eum sed numquam, tempore perspiciatis atque aut vitae quam sunt nemo consectetur? Eos facilis animi quaerat dolores.</p>
+  <a href="#Jack">1111</a> <br />
+    <a href="#peter">2222</a> <br />
+    <a href="#ken">3333</a>
   </div>
 </template>
 <script setup>
@@ -101,6 +116,7 @@ console.log(timeA)
 // console.log(dayjs('2022-03-18T00:49:49+08:00')) // date
 // console.log(dayjs()) // now
 // console.log(dayjs().format()) // format
+// const timeAA = dayjs().duration
 
 // const timeC = dayjs().format()
 // console.log(timeC)
@@ -134,3 +150,10 @@ console.log(timeA)
 // }
 // setTimeout(fixed, 1000)
 </script>
+<style scoped>
+.box{
+  width: 500px;
+  height: 500px;
+  background: red;
+}
+</style>

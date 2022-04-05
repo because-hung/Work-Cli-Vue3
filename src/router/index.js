@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import testB from '../components/testB.vue'
 
@@ -23,9 +23,18 @@ const routes = [
   }
 ]
 
-const router = createRouter({
-  history: createWebHashHistory(),
-  routes
-})
+// rework
 
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+  mode: 'history',
+  scrollBehavior (to) {
+    if (to.hash) {
+      return {
+        selector: to.hash
+      }
+    }
+  }
+})
 export default router
