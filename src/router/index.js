@@ -38,3 +38,8 @@ const router = createRouter({
   }
 })
 export default router
+
+// //rework
+// router.afterEach((to, from, next) => {
+// 	window.scrollTo(0, 0);
+// });
