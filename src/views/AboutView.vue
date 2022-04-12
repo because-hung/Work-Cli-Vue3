@@ -1,4 +1,17 @@
 <template>
+<button @click="leftSide()">left home game</button>
+<button @click="rightSide()">right away game</button>
+<div v-if="anFlag > 0" class="alertGroup" :class="{ 'alertAn' : anFlag === 1, 'alertAntw' : anFlag === 2, '' : anFlag === 0 }">
+<div class="alert alert-primary" role="alert">
+  A simple primary alert—check it out!
+</div>
+<div class="alert alert-secondary" role="alert">
+  A simple secondary alert—check it out!
+</div>
+<div class="alert alert-success" role="alert">
+  A simple success alert—check it out!
+</div>
+</div>
   <div class="about">
     <ul v-for="(item, i) in data" :key="i">
       <li :id="`${item.name}`">{{ item.name }}</li>
@@ -24,11 +37,30 @@ import { onMounted, ref } from 'vue'
 import { fetchFakeApi } from '../../api/fakeApi'
 
 const data = ref([])
+const anFlag = ref(0)
+const vvv = ref(0)
+
+// animate work
+function leftSide () {
+  anFlag.value = 1
+  setTimeout(() => {
+    anFlag.value = 0
+  }, 2500)
+}
+
+function rightSide () {
+  anFlag.value = 2
+  setTimeout(() => {
+    anFlag.value = 0
+  }, 2500)
+}
 
 onMounted(() => {
   fetchFakeApi().then((res) => {
     console.log('res', res)
     data.value = res.data.columns
+    vvv.value = res.data.columns[0].value ?? res.data.columns[0].id
+    console.log('value', vvv.value)
   })
 })
 
@@ -155,5 +187,34 @@ console.log(timeA)
   width: 500px;
   height: 500px;
   background: red;
+}
+
+/* animate work  */
+.alert{
+  width: 80%;
+}
+.alertAn{
+  position: absolute;
+  animation: alertAn 3s;
+  transition-timing-function: cubic-bezier(0.2, 0.4, 0.7, 0.8);
+}
+
+.alertAntw{
+  position: absolute;
+  animation: alertAntw 3s;
+  transition-timing-function: cubic-bezier(0.2, 0.4, 0.7, 0.8);
+
+}
+
+@keyframes alertAn {
+     0% { left: 0; top: 20%; opacity: 1;}
+    50% { left: 50%; top: 20%; opacity: 1;}
+    100% { left: 100%; top: 100%; opacity: 0.2;}
+}
+
+@keyframes alertAntw {
+     0% { right: 0; top: 20%; opacity: 1;}
+    50% { right: 50%; top: 20%; opacity: 1;}
+    100% { right: 100%; top: 100%; opacity: 0.2;}
 }
 </style>
