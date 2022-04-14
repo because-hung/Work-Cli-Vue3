@@ -1,5 +1,11 @@
 <template>
   <div class="hello">
+    <h2>slot test</h2>
+    <testB :deta="deta">
+      <template #item="props">
+        <li>{{ props.text }}</li>
+      </template>
+    </testB>
     <!-- <h2>status => {{ statusX }}</h2>
     <h2>true 1 / false 2</h2>
     {{ num }}
@@ -42,13 +48,32 @@
 import { computed, watch, ref } from 'vue'
 import { useStore } from 'vuex'
 import dayjs from 'dayjs'
+import testB from './testB.vue'
 export default {
   name: 'HelloWorld',
+  components: {
+    testB
+  },
   props: {
     msg: String
   },
 
   setup () {
+    const deta = [{
+      name: 'slotman',
+      id: 390,
+      event: 'hello world'
+    },
+    {
+      name: 'slotman2',
+      id: 390,
+      event: 'hello world'
+    },
+    {
+      name: 'slotman3',
+      id: 390,
+      event: 'hello world'
+    }]
     const localVable = localStorage.getItem('ccc')
     console.log('local', localVable)
     const store = useStore()
@@ -181,6 +206,7 @@ export default {
     }
 
     return {
+      deta,
       changeEvent,
       num,
       statusX,

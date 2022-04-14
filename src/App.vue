@@ -7,7 +7,7 @@
   <p>test line</p>
   <p></p>
   <p></p>
-  <router-view/>
+  <router-view />
 </template>
 
 <script>
