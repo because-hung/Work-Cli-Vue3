@@ -102,7 +102,7 @@ export default {
 
     setTimeout(() => {
       console.log('watchDom', dataDom.value)
-      deta[0].id = 480
+      deta[0].id = 490
       console.log('change')
       console.log(deta[0].id)
       numberf.value = 3

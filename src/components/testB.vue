@@ -61,20 +61,14 @@ export default {
         dataDom.value = proxy.$refs.dataId.innerText
       }
       console.log('child Dom', dataDom.value)
-      nextTick(() => {
-        console.log('tick')
-      })
     })
 
     onUpdated(() => {
-      console.log('update')
-      if (proxy.$refs.dataId) {
-        dataDom.value = proxy.$refs.dataId.innerText
-      }
+      console.log('child update')
+      dataDom.value = proxy.$refs.dataId.innerText
       console.log('child tick Dom', dataDom.value)
       nextTick(() => {
-        console.log('tick')
-        console.log('change')
+        console.log('change tick')
       })
     })
 
