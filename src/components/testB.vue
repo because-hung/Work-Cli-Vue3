@@ -40,6 +40,10 @@ export default {
     //  onBeforeUpdate(()=>{
     //      divs.value =[]
     //    })
+
+    // 多個
+
+    // restart nexttick update
     const store = useStore()
     const { proxy } = getCurrentInstance()
     const dataDom = ref(null)
