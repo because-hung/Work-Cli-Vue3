@@ -2,10 +2,17 @@
   <div class="hello">
     <h2>slot test</h2>
     <testB :deta="deta">
-      <template #item="props">
+      <!-- <template #item="props">
         <li>{{ props.text }}</li>
-      </template>
+      </template> -->
     </testB>
+
+     <h2>home watch</h2>
+  <div class="box">
+<ul>
+  <li>it {{ deta[0].name }} - <span ref="dataId">{{ deta[0].id }}</span></li>
+</ul>
+  </div>
     <!-- <h2>status => {{ statusX }}</h2>
     <h2>true 1 / false 2</h2>
     {{ num }}
@@ -45,7 +52,7 @@
 </template>
 
 <script>
-import { computed, watch, ref } from 'vue'
+import { computed, watch, ref, reactive, onMounted, getCurrentInstance, onUpdated, nextTick } from 'vue'
 import { useStore } from 'vuex'
 import dayjs from 'dayjs'
 import testB from './testB.vue'
@@ -58,22 +65,67 @@ export default {
     msg: String
   },
 
-  setup () {
-    const deta = [{
+  setup (props) {
+    const deta = reactive([{
       name: 'slotman',
       id: 390,
       event: 'hello world'
     },
     {
       name: 'slotman2',
-      id: 390,
+      id: 350,
       event: 'hello world'
     },
     {
       name: 'slotman3',
-      id: 390,
+      id: 420,
       event: 'hello world'
-    }]
+    }])
+
+    // restart shot ball
+
+    const { proxy } = getCurrentInstance()
+    const dataDom = ref(null)
+    const numberf = ref(1)
+    const vFlag = ref(false)
+    console.log('deta props', props.deta)
+
+    function getDom () {
+      dataDom.value = proxy.$refs.dataId.innerText
+    }
+
+    onMounted(() => {
+      getDom()
+      console.log('home', dataDom.value)
+      console.log('deta props on', props.deta)
+    })
+
+    setTimeout(() => {
+      console.log('watchDom', dataDom.value)
+      deta[0].id = 480
+      console.log('change')
+      console.log(deta[0].id)
+      numberf.value = 3
+      console.log('num', numberf.value)
+      nextTick(() => {
+        getDom()
+        console.log('tick Dom', dataDom.value)
+        vFlag.value = true
+      })
+    }, 5000)
+
+    onUpdated(() => {
+      console.log('update')
+    })
+
+    watch(dataDom, () => {
+      console.log('every')
+      if (vFlag.value) {
+        console.log('shot')
+      }
+    })
+
+    console.log('local111', deta)
     const localVable = localStorage.getItem('ccc')
     console.log('local', localVable)
     const store = useStore()
@@ -179,7 +231,7 @@ export default {
       console.log(seconds.value)
     }
 
-    const stop = setInterval(() => endTime(seconds), 1000)
+    // const stop = setInterval(() => endTime(seconds), 1000)
     setTimeout(() => {
       clearInterval(stop)
     }, 5000)
@@ -206,6 +258,7 @@ export default {
     }
 
     return {
+      endTime,
       deta,
       changeEvent,
       num,
