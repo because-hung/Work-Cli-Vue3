@@ -13,8 +13,8 @@
 
   <h2>props watch</h2>
   <div class="box">
-<ul v-if="deta">
-  <li>it {{ deta[0] }} - <span ref="dataId">{{ deta[0] }}</span></li>
+<ul v-if="deta[0]">
+  <li>it {{ deta[0].name }} - <span ref="dataId">{{ deta[0].id }}</span></li>
 </ul>
   </div>
    <!-- <button @click="changeEve(false)">BBBFFF</button>
@@ -24,7 +24,7 @@
     <h3>test git3</h3>-->
 </template>
 <script>
-import { reactive, getCurrentInstance, onMounted } from 'vue'
+import { reactive, getCurrentInstance, onMounted, nextTick, ref, onUpdated, watch } from 'vue'
 import { useStore } from 'vuex'
 export default {
   props: {
@@ -42,14 +42,36 @@ export default {
     //    })
     const store = useStore()
     const { proxy } = getCurrentInstance()
+    const dataDom = ref(null)
     const changeEve = (ccc) => {
       store.dispatch('getStatus', ccc)
       localStorage.setItem('ccc', ccc)
     }
 
+    watch(dataDom, () => {
+      console.log('watch in')
+    })
+
     onMounted(() => {
-      const dataDom = proxy.$refs.dataId
-      console.log(dataDom)
+      if (proxy.$refs.dataId) {
+        dataDom.value = proxy.$refs.dataId.innerText
+      }
+      console.log('child Dom', dataDom.value)
+      nextTick(() => {
+        console.log('tick')
+      })
+    })
+
+    onUpdated(() => {
+      console.log('update')
+      if (proxy.$refs.dataId) {
+        dataDom.value = proxy.$refs.dataId.innerText
+      }
+      console.log('child tick Dom', dataDom.value)
+      nextTick(() => {
+        console.log('tick')
+        console.log('change')
+      })
     })
 
     const CCC = reactive({
