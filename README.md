@@ -1,4 +1,6 @@
-練習用  vue3 + vue cli
+這個repo是用來練習測試 跟紀錄一些工作上的語法
+
+vue3 + vue cli
 
 # work-cli-vue3
 
