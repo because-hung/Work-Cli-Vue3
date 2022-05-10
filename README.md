@@ -1,3 +1,5 @@
+練習用  vue3 + vue cli
+
 # work-cli-vue3
 
 ## Project setup
