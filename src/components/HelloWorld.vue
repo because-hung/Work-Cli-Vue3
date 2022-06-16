@@ -13,9 +13,10 @@
   <li>it {{ deta[0].name }} - <span ref="dataId">{{ deta[0].id }}</span></li>
 </ul>
   </div>
-    <!-- <h2>status => {{ statusX }}</h2>
-    <h2>true 1 / false 2</h2>
-    {{ num }}
+    <h2>status => {{ statusX }}</h2>
+    <h2 v-if="num === 1">true 1 - {{ num }}</h2>
+     <h2 v-if="num === 2">false 2 - {{ num }}</h2>
+
     <h2>paramet</h2>
     <button @click="changeEvent(true)">TTT</button>
     <button @click="changeEvent(false)">FFF</button>
@@ -23,7 +24,7 @@
     <router-link to="./testb">bro</router-link>
 
     <h1>main test rebase</h1>
-    <h2>main test rebase2</h2> -->
+    <h2>main test rebase2</h2>
 
     <h2>reset tg1</h2>
     <div class="timeout">

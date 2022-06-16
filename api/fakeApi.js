@@ -3,9 +3,93 @@ export const fetchFakeApi = () => {
     const res = {
       data: {
         columns: [
-          { id: 1, name: 'Jack', price: 2000, video: 'https://www.youtube.com/embed/Y65kO3YcXFk', value: null },
-          { id: 2, name: 'peter', price: 5000, video: 'https://www.youtube.com/embed/jTXTyGjEze8' },
-          { id: 3, name: 'ken', price: 1640, video: 'https://www.youtube.com/embed/Mw3rvycVqG4' }
+          {
+            name: 'tom17',
+            country: 'USA',
+            id: 'live',
+            food: [
+              {
+                id: 153252,
+                cookie: 'straw'
+              },
+              {
+                id: 744138,
+                cookie: 'banana'
+              },
+              {
+                id: 184312,
+                cookie: 'menlon'
+              }
+            ]
+          },
+          {
+            name: 'bay12',
+
+            country: 'CANA',
+            id: 'fixtures',
+            food: [
+              {
+                id: 102482,
+                cookie: 'straw'
+              },
+              {
+                id: 407782,
+                cookie: 'water'
+              },
+              {
+                id: 889782,
+                cookie: 'coden'
+              },
+              {
+                id: 482187,
+                cookie: 'beer'
+              },
+              {
+                id: 105538,
+                cookie: 'queen'
+              }
+            ]
+          },
+          {
+            name: 'Kom',
+
+            country: 'lorea',
+            id: 'finish',
+            food: [
+              {
+                id: 102738,
+                cookie: 'stw'
+              },
+              {
+                id: 780457,
+                cookie: 'kta'
+              }
+            ]
+          },
+          {
+            name: 'pp',
+
+            country: 'USAaaa',
+            id: 'others',
+            food: [
+              {
+                id: 102239,
+                cookie: 'sneak'
+              },
+              {
+                id: 402493,
+                cookie: 'fgh'
+              },
+              {
+                id: 987662,
+                cookie: 'tty'
+              },
+              {
+                id: 569732,
+                cookie: 'skll'
+              }
+            ]
+          }
         ]
       }
     }

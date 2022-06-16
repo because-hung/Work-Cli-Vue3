@@ -1,4 +1,5 @@
 <template>
+<h2>props:{{ valueS }}</h2>
 <h2>son</h2>
 <input type="text" v-model="txt">
 <h2>OG:{{ txt }}</h2>
@@ -16,12 +17,15 @@
 </template>
 <script setup>
 import { useStore } from 'vuex'
-import { computed, ref, watch, reactive, readonly, watchEffect } from 'vue'
+import { computed, ref, watch, reactive, readonly, watchEffect, defineProps } from 'vue'
 const store = useStore()
 const changeStatus = (bbb) => {
   store.dispatch('getStatus', bbb)
   localStorage.setItem('ccc', bbb)
 }
+const valueS = defineProps({
+  valueT: Array
+})
 
 // restart
 //  getfocus(e) {

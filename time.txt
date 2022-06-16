@@ -1,0 +1,131 @@
+let videoStatus = 0
+
+    
+  const timeNow = dayjs()
+    console.log(timeNow)
+    const timeB = dayjs().add(2, 'day')
+    console.log(timeB)
+    let seconds = timeB.diff(timeNow)
+    console.log(seconds)
+    const diffWithDay = ref(Math.floor(seconds / (1000 * 60 * 60 * 24)))
+    const diffWithHour = ref(Math.floor((seconds / (1000 * 60 * 60) % 24)))
+    const diffWithMM = ref(Math.floor((seconds / 1000 / 60) % 60))
+    const diffWithSS = ref(Math.floor((seconds / 1000) % 60))
+
+    const endTime = () => {
+      seconds -= 4000
+      diffWithDay.value = Math.floor((seconds / (1000 * 60 * 60 * 24)))
+      diffWithHour.value = Math.floor((seconds / (1000 * 60 * 60) % 24))
+      diffWithMM.value = Math.floor((seconds / 1000 / 60) % 60)
+      diffWithSS.value = Math.floor((seconds / 1000) % 60)
+    }
+
+    setInterval(() => endTime(seconds), 1000)
+    console.log(diffWithHour)
+
+    
+let foodData = reactive([
+  {
+    name: "tom17",
+      
+        country: "USA",
+        id: "live",
+        food: [
+          {
+            id:153252,
+            cookie: "straw",
+          },
+          {
+            id:744138,
+            cookie: "banana",
+          },
+          {
+            id:184312,
+            cookie: "menlon",
+          },
+        ],
+      
+    
+  },
+  {
+    name: "bay12",
+ 
+        country: "CANA",
+        id: "fixtures",
+        food: [
+          {
+            id:102482,
+            cookie: "straw",
+          },
+           {
+            id:407782,
+            cookie: "water",
+          },
+           {
+            id:889782,
+            cookie: "coden",
+          },
+           {
+            id:482187,
+            cookie: "beer",
+          },
+           {
+            id:105538,
+            cookie: "queen",
+          },
+        ],
+
+  },
+  {
+    name: "Kom",
+  
+        country: "lorea",
+        id: "finish",
+        food: [
+          {
+            id:102738,
+            cookie: "stw"
+          },
+           {
+            id:780457,
+            cookie: "kta"
+          },
+        ],
+
+  },
+  {
+    name: "pp",
+  
+        country: "USAaaa",
+        id: "others",
+        food: [
+          {
+            id:102239,
+            cookie: "sneak",
+          },
+          {
+            id:402493,
+            cookie: "fgh",
+          },
+          {
+            id:987662,
+            cookie: "tty",
+          },
+          {
+            id:569732,
+            cookie: "skll",
+          },
+        ],
+      },
+
+]);
+
+  const cityData = []
+        cityNameAry.forEach(item => {
+          let cityInfo = filterAry.find(element => {
+            return element.a03 === item && element.a02 === self.timeCode // 比對縣市抓出最近的一筆資料
+          })
+          cityData.push(cityInfo)
+        })
+
+ <img class="px-16" src="https://fakeimg.pl/300x200/" alt="" />

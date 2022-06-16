@@ -32,13 +32,23 @@
   </div>
 </template>
 <script setup>
-import { onMounted, ref } from 'vue'
-// import axios from 'axios'
+import { onMounted, reactive, ref } from 'vue'
+import axios from 'axios'
 import { fetchFakeApi } from '../../api/fakeApi'
 
 const data = ref([])
 const anFlag = ref(0)
 const vvv = ref(0)
+const ABB = ref({
+  name: 'froggy'
+})
+const BBA = reactive({
+  name: 'wangA'
+})
+const CCA = ref([1, 2, 5])
+console.log('ref', ABB.value)
+console.log('ref', CCA.value)
+console.log('reactive', BBA)
 
 // animate work
 function leftSide () {
@@ -57,14 +67,14 @@ function rightSide () {
 
 onMounted(() => {
   fetchFakeApi().then((res) => {
-    console.log('res', res)
+    // console.log('res', res)
     data.value = res.data.columns
     vvv.value = res.data.columns[0].value ?? res.data.columns[0].id
-    console.log('value', vvv.value)
+    // console.log('value', vvv.value)
   })
 })
 
-console.log('ref data', data.value)
+// console.log('ref data', data.value)
 
 // restart
 // const date = Date.now()
@@ -159,21 +169,21 @@ console.log(timeA)
 // const startTime = dayjs()
 // let count = 0
 
-// function getApi () {
-//   console.log('123')
-//   axios.get('https://jsonplaceholder.typicode.com/todos/1')
-//     .then((res) => { console.log(res.data) })
-//     .catch((error) => { console.error(error) })
-// }
+function getApi () {
+  console.log('123')
+  axios.get('https://jsonplaceholder.typicode.com/todos/1')
+    .then((res) => { console.log(res.data) })
+    .catch((error) => { console.error(error) })
+}
 
-// getApi()
+getApi()
 
-// setInterval(() => getApi(), 30000)
+setInterval(() => getApi(), 30000)
 
 // const fixed = () => {
 //   count++
 //   const aaa = (dayjs() - (startTime + count * 1000))
-//   console.log(aaa)
+// console.log(aaa)
 //   let nextTime = 1000 - aaa
 //   if (aaa < 0) {
 //     nextTime = 0
