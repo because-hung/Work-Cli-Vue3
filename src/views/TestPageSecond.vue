@@ -1,26 +1,17 @@
 <template>
-  <div class="containerB">
-    <h2>1:{{ data }}</h2>
-    <h2>{{ deta.data }}</h2>
-    <header>
-      <div class="title">sleep product reviewes</div>
-      <ul class="menu">
-        <li class="first">home</li>
-        <li>about</li>
-        <li>item</li>
-        <li>shop</li>
+  <div class="container">
+    <!-- country
+       <div class="nav">
+      <div class="country">
+      <div class="h4" @click="openList = !openList">Taiwan <img src="../assets/TW.png" alt=""></div>
+      <ul class="list" v-if='openList'>
+        <li>TW <img src="../assets/TW.png" alt=""></li>
+        <li>JP <img src="../assets/JP.png" alt=""></li>
+        <li>KR <img src="../assets/KR.jpg" alt=""></li>
       </ul>
-    </header>
-    <div class="bannerB">
-      <div class="productImg"><img src="https://fakeimg.pl/300x200/" alt=""></div>
-      <div class="content">
-        <h2>title</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, rem ullam, molestias illum incidunt aperiam autem omnis aliquid accusantium eveniet repudiandae! Consequatur quis magni autem praesentium dolorum repellat ducimus repellendus!</p>
-        <button>enter in</button>
       </div>
-    </div>
-    <div class="slogan">show me your clothes</div>
-    <div class="productB">
+    </div> -->
+    <!-- <div class="productB">
      <div class="cardB"><img src="https://fakeimg.pl/300x200/" alt=""><h2>title for product</h2><h3>Lorem, ipsum.
      Quidem, autem!</h3></div>
       <div class="cardB"><img src="https://fakeimg.pl/300x200/" alt=""><h2>title for product</h2><h3>Lorem, ipsum.
@@ -29,7 +20,95 @@
      Quidem, autem!</h3></div>
       <div class="cardB"><img src="https://fakeimg.pl/300x200/" alt=""><h2>title for product</h2><h3>Lorem, ipsum.
      Quidem, autem!</h3></div>
-    </div>
+    </div> -->
+    <header>
+      <div class="leftS">
+      <div class="logo">
+        <img src="../assets/JP.png" alt="">
+        <h2>serniors</h2>
+      </div>
+      <div class="btnGroup">
+        <button>home</button>
+        <button>groups</button>
+        <button>events</button>
+      </div>
+      </div>
+      <div class="user">
+        <img src="../assets/TW.png" alt="">
+        <h2>Anna</h2>
+      </div>
+    </header>
+    <section>
+      <!-- <div class="title">Discover</div> -->
+      <div class="info">
+        <div class="cardA">
+          <img src="https://fakeimg.pl/300x200/" alt="">
+          <div class="content">
+            <div class="contentTitle">
+            <h4>coffeee llll</h4>
+            <h6 @click="clickme()">wddhere is uuuu</h6>
+            </div>
+            <a href="mailto:email@gmail.com">mail me</a>
+             <button>join</button>
+          </div>
+        </div>
+            <div class="cardA">
+          <img src="https://fakeimg.pl/300x200/" alt="">
+          <div class="content">
+            <div class="contentTitle">
+            <h4>coffeee llll</h4>
+            <h6>where is uuuu</h6>
+            </div>
+                 <a href="mailto:email@gmail.com">mail me</a>
+             <button>join</button>
+          </div>
+        </div>
+            <div class="cardA">
+          <img src="https://fakeimg.pl/300x200/" alt="">
+          <div class="content">
+            <div class="contentTitle">
+            <h4>coffeee llll</h4>
+            <h6>where is uuuu</h6>
+            </div>
+                 <a href="mailto:email@gmail.com">mail me</a>
+             <button>join</button>
+          </div>
+        </div>
+            <div class="cardA">
+          <img src="https://fakeimg.pl/300x200/" alt="">
+          <div class="content">
+            <div class="contentTitle">
+            <h4>coffeee llll</h4>
+            <h6>where is uuuu</h6>
+            </div>
+                 <a href="mailto:email@gmail.com">mail me</a>
+             <button>join</button>
+          </div>
+        </div>
+            <div class="cardA">
+          <img src="https://fakeimg.pl/300x200/" alt="">
+          <div class="content">
+            <div class="contentTitle">
+            <h4>coffeee llll</h4>
+            <h6>where is uuuu</h6>
+            </div>
+                 <a href="mailto:email@gmail.com">mail me</a>
+             <button>join</button>
+          </div>
+        </div>
+            <div class="cardA">
+          <img src="https://fakeimg.pl/300x200/" alt="">
+          <div class="content">
+            <div class="contentTitle">
+            <h4>coffeee llll</h4>
+            <h6>where is uuuu</h6>
+            </div>
+              <a href="mailto:111111@qq.com;111112@qq.com?cc=222222@qq.com;222223@qq.com&bcc=333333@qq.com;333334@qq.com&subject=this is title&body=this is body">tedddst</a>
+             <button>join</button>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 <script>
@@ -38,6 +117,7 @@ import { fetchFakeApi } from '../../api/fakeApi'
 import { useStore } from 'vuex'
 export default {
   setup () {
+    const openList = ref(false)
     const msg = ref('')
     watch(msg, () => {
       console.log('msg', msg.value)
@@ -111,6 +191,7 @@ export default {
     const aaa = ref(store.state.statusA)
 
     function clickme (value) {
+      window.location.href = ';mailto:user@example.com?subject=Subject&body=message%20goes%20here'
       store.dispatch('getStatusA', value)
       aaa.value = store.state.statusA
       console.log(aaa)
@@ -168,7 +249,8 @@ export default {
       aaa,
       arr,
       obj,
-      msg
+      msg,
+      openList
     }
   }
 }
@@ -179,79 +261,106 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-.containerB{
+.container{
     padding: 0px 10%;
 }
-header{
-  text-align: left;
-  margin-left: 10px;
-  .title{
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  .menu{
-    display: flex;
-    padding-left: 0px;
-    li{
-    margin: 5px;
-    padding: 10px;
-  }
-   .first{
-      margin-left: 0px;
-      padding-left: 5px;
-      font-weight: 700;
-    }
-  }
-}
-.bannerB{
+// country
+// .nav{
+//   border: 1px solid black;
+//   background: yellow;
+// }
+// .country{
+//   margin-left: auto;
+// }
+// .h4{
+//   display: flex;
+//   background: white;
+//   padding: 5px;
+//   cursor: pointer;
+// }
+// img{
+//   width: 120px;
+//   height: 50px;
+// }
+// .list{
+//   background: white;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   li{
+//     display: flex;
+//     justify-content: space-between;
+//     padding: 10px;
+//     border: 1px solid red;
+//     margin: 10px 0px;
+//   }
+// }
+//
+ img{
+   width: 120px;
+   height: 50px;
+ }
+
+ header{
   display: flex;
-  .productImg{
-    width: 48%;
-    img{
-      width: 100%;
-    }
-  }
-  .content{
-    width: 48%;
+ .leftS{
+  display: flex;
+ }
+  .logo{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    h2{
-      font-size: 36px;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-    p{
-      padding: 0 20%;
-      margin: 20px 0;
-    }
+  }
+  .btnGroup{
+    margin-left: 50px;
     button{
-      width: 100px;
+      margin:0px 20px;
+      width: 50px;
       height: 50px;
-      border: 3px solid black;
-      align-self: center;
-    }
-  }
-}
-.slogan{
-  text-align: left;
-  margin: 50px 0px 30px 0px;
-   font-size: 36px;
-      font-weight: 700;
-}
- .productB{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 20px;
-    .cardB{
-      img{
-        width: 100%;
-      }
-      h2, h3{
+      border-bottom: 1px red solid;
       font-size: 20px;
-      margin: 10px 0px;
-      }
+      font-weight: 700;
+      transform: translateY(-10px);
+    }
+    button:hover{
+      color:green;
+      border-bottom: 1px green solid;
     }
   }
+  .user{
+    margin-left: auto;
+    display: flex;
+  }
+ }
+
+ section{
+  margin-top: 50px;
+  display: flex;
+  margin:  auto;
+  .title{
+    font-size: 24px;
+    font-weight: 700;
+    text-align: left;
+  }
+  .info{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+      }
+  .cardA{
+    width: 20%;
+    margin: 5px 10px;
+    img{
+      width: 300px;
+      height: 200px;
+    }
+    .content{
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  .cardA:last-child{
+    margin-right: auto;
+    margin-left: 30px;
+  }
+ }
 </style>

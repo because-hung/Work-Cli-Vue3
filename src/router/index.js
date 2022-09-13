@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import testB from '../components/testB.vue'
 import TestPage from '../views/TestPage.vue'
 import TestPageSecond from '../views/TestPageSecond.vue'
+import uiTest from '../views/uiTest.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/testPsec',
     name: 'testPageSecond',
     component: TestPageSecond
+  },
+  {
+    path: '/testUi',
+    name: 'testUi',
+    component: uiTest
   },
   {
     path: '/about',

@@ -1,4 +1,8 @@
 <template>
+ <router-link to="">Home</router-link> |
+<button @click="clickA()">A</button>
+<button @click="clickB()">B</button>
+<h2>{{testNum}}</h2>
   <!-- <p>{{ com }}</p>
 <button @click="count()">change</button>
 <div class="outer">
@@ -109,6 +113,13 @@ export default {
     SwiperSlide
   },
   setup () {
+    const testNum = ref(1)
+    function clickA () {
+      testNum.value = 2
+    }
+    function clickB () {
+      testNum.value = 1
+    }
     const testAA = ref([1, 2, 3, 4, 5])
     const testBB = ref({
       name: 'ling',
@@ -241,6 +252,9 @@ export default {
       count,
       onSwiper,
       onSlideChange,
+      testNum,
+      clickA,
+      clickB,
       modules: [Navigation, Pagination, Scrollbar, A11y]
     }
   }
