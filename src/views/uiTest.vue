@@ -10,7 +10,7 @@
         <button @click="switchC(2, CountryLabel)">{{CountryLabel}}</button>
         <button @click="switchC(3, TypeLabel)">{{TypeLabel}}</button>
       </div>
-      <div class="content">
+      <div class="content" ref="main">
         <ul class="time" :key="showStatus" v-if="showStatus == 1" :class="[ ogIndex > 0 ? 'alertAn' : '' , ogIndex < 0 ? 'alertAntw' : '' ]">
           <li @click="switchC(1, item)" v-for="(item, i) in timeData.result" :key="i">{{item}}</li>
         </ul>
@@ -24,17 +24,37 @@
     </div>
 </template>
 <script>
-import { reactive, ref } from 'vue'
+import { reactive, ref, getCurrentInstance, onMounted } from 'vue'
 export default {
   setup () {
+    const pageX = ref(0)
+    const px1 = ref(0)
+    const px2 = ref(0)
     const ogIndex = ref(0)
-    const showStatus = ref(0)
+    const showStatus = ref(1)
     const showTime = ref(false)
     const showCountry = ref(false)
     const showType = ref(false)
     const timeLabel = ref('今天')
     const CountryLabel = ref('台北北')
     const TypeLabel = ref('預購')
+    const { proxy } = getCurrentInstance()
+    function downE (e) {
+      console.log('1', e.clientX)
+      px1.value = e.clientX
+    }
+    function upE (e) {
+      const val = showStatus.value
+      console.log('2', e.clientX)
+      px2.value = e.clientX
+      pageX.value = px2.value - px1.value
+      if (pageX.value < 0 && showStatus.value !== 3) {
+        showStatus.value++
+      } else if (pageX.value > 0 && showStatus.value !== 1) {
+        showStatus.value--
+      }
+      ogIndex.value = showStatus.value - val
+    }
 
     function switchC (val, item) {
       ogIndex.value = showStatus.value - val
@@ -125,7 +145,16 @@ export default {
       result: ['投報', '預購', '已匯款', '取消', '未確認']
     })
 
+    onMounted(() => {
+      const el = proxy.$refs.main
+      console.log(el)
+      el.addEventListener('mousedown', downE)
+      el.addEventListener('mouseup', upE)
+    })
+
     return {
+      downE,
+      upE,
       countryData,
       timeData,
       typeData,
@@ -140,7 +169,8 @@ export default {
       TypeLabel,
       CountryLabel,
       switchC2,
-      ogIndex
+      ogIndex,
+      pageX
     }
   }
 }
