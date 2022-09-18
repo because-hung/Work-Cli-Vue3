@@ -27,6 +27,17 @@
 import { reactive, ref, getCurrentInstance, onMounted } from 'vue'
 export default {
   setup () {
+  // RegExp
+    const rex1 = /^(?![\d]+$)[A-Za-z\d]{6,12}$/
+    // (?![0-9]+$)
+    // 断言此位置之后，字符串结尾之前，所有的字符不能全部由数字组成
+    // (?![a-zA-Z]+$)
+    // 断言此位置之后，字符串结尾之前，所有的字符不能全部由26个英文字母组成
+    // [0-9A-Za-z]{6,12}
+    // 匹配整个字符串由6~12位由数字和26个英文字母混合而成
+    // EX: const rex = /^(?![\d]+$)(?![A-Za-z]+$)[A-Za-z\d]{6,12}$/
+    console.log(rex1.test('asdasd'))
+
     const pageX = ref(0)
     const px1 = ref(0)
     const px2 = ref(0)
