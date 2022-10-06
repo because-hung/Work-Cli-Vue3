@@ -1,6 +1,23 @@
 <template >
     <div class="container">
-      <div class="fakeEl">
+      <div class="outterR">
+      <div class="testPo"> //外框
+      </div>
+        <div class="outterP">
+        <div class="boxP"><p class="one">1</p><p>2</p></div>
+        <div class="boxP"><p>1</p><p>2</p></div>
+      <div class="boxP"><p>1</p><p>2</p></div>
+        </div>
+        </div>
+      <div class="testAAAAA" v-if="false">
+        <h2>img</h2>
+        <img class="img2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWqzSddfpyA4VvGFIydhj0vcTi3hPynZ2_K5IW_ioZB-LuFjh8&s'" alt="">
+      </div>
+        <div class="test2" v-if="false">
+        <h2>bg-img</h2>
+       <div class="bgImg" v-if="false"></div>
+      </div>
+      <div class="fakeEl" v-if="false">
         <div class="order">帳單</div>
       </div>
       <br>
@@ -28,7 +45,7 @@ import { reactive, ref, getCurrentInstance, onMounted } from 'vue'
 export default {
   setup () {
   // RegExp
-    const rex1 = /^(?![\d]+$)[A-Za-z\d]{6,12}$/
+    const rex1 = /^[A-Za-z\d]{6,12}$/
     // (?![0-9]+$)
     // 断言此位置之后，字符串结尾之前，所有的字符不能全部由数字组成
     // (?![a-zA-Z]+$)
@@ -36,7 +53,7 @@ export default {
     // [0-9A-Za-z]{6,12}
     // 匹配整个字符串由6~12位由数字和26个英文字母混合而成
     // EX: const rex = /^(?![\d]+$)(?![A-Za-z]+$)[A-Za-z\d]{6,12}$/
-    console.log(rex1.test('asdasd'))
+    console.log(rex1.test('123456dff!'))
 
     const pageX = ref(0)
     const px1 = ref(0)
@@ -267,5 +284,63 @@ export default {
 //         border-radius: 5px;
 //     }
 // }
+.img2{
+  height: 150px;
+}
+.bgImg{
+  width: 260px;
+  height: 200px;
+   background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWqzSddfpyA4VvGFIydhj0vcTi3hPynZ2_K5IW_ioZB-LuFjh8&s');
+   background-repeat: no-repeat;
+background-size: 200px 200px;
+}
+.outterR{
+  position: relative;
+}
+
+.testPo{
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 300px;
+  border: 1px black solid;
+  display: flex;
+  position: relative;
+  .boxO{
+    width: 300px;
+    height: 100px;
+    border: 1px blue solid;
+     position: absolute;
+  top: 38%;
+  right: 26%;
+  font-size: 20px;
+  }
+
+}
+
+.outterP{
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: space-around;
+  top: 60%;
+  right: 20%;
+  font-size: 20px;
+  border: 1px blue solid;
+  width: 60%;
+}
+
+.boxP{
+  width: 20%;
+  height: 50px;
+  background: red;
+  color: white;
+  line-height: 50px;
+  font-size: 20px;
+  display: flex;
+ justify-content: center;
+  .one{
+     margin-right: auto;
+  }
+}
 
 </style>
