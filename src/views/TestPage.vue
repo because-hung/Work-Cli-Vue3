@@ -1,4 +1,55 @@
 <template>
+<div class="boot-group d-flex justify-content-around align-items-center mb-5">
+  <div class="card" style="width: 18rem;">
+  <img src="https://fakeimg.pl/200x100/" class="card-img-top" alt="https://fakeimg.pl/200x100/">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="https://fakeimg.pl/200x100/" class="card-img-top" alt="https://fakeimg.pl/200x100/">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="https://fakeimg.pl/200x100/" class="card-img-top" alt="https://fakeimg.pl/200x100/">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="https://fakeimg.pl/200x100/" class="card-img-top" alt="https://fakeimg.pl/200x100/">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="https://fakeimg.pl/200x100/" class="card-img-top" alt="https://fakeimg.pl/200x100/">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+</div>
+<div class="item-group grid grid-cols-4 gap-4 px-4">
+  <div @click="alertG('A')" class="test-item flex flex-col item-center justify-center"><img src="https://fakeimg.pl/200x100/" alt=""> <span class="my-2">title</span> <div class="price mt-5">100</div> </div>
+     <div @click="alertG('B')" class="test-item flex flex-col item-center justify-center"><img src="https://fakeimg.pl/200x100/" alt=""> <span class="my-2">title</span> <div class="price mt-5">100</div> </div>
+       <div @click="alertG('C')" class="test-item flex flex-col item-center justify-center"><img src="https://fakeimg.pl/200x100/" alt=""> <span class="my-2">title</span> <div class="price mt-5">100</div> </div>
+         <div @click="alertG('D')" class="test-item flex flex-col item-center justify-center"><img src="https://fakeimg.pl/200x100/" alt=""> <span class="my-2">title</span> <div class="price mt-5">100</div> </div>
+           <div @click="alertG('E')" class="test-item flex flex-col item-center justify-center"><img src="https://fakeimg.pl/200x100/" alt=""> <span class="my-2">title</span> <div class="price mt-5">100</div> </div>
+
+</div>
  <router-link to="">Home</router-link> |
 <button @click="clickA()">A</button>
 <button @click="clickB()">B</button>
@@ -114,6 +165,9 @@ export default {
   },
   setup () {
     const testNum = ref(1)
+    const alertG = (val) => {
+      alert('success! ' + val)
+    }
     function clickA () {
       testNum.value = 2
     }
@@ -255,6 +309,7 @@ export default {
       testNum,
       clickA,
       clickB,
+      alertG,
       modules: [Navigation, Pagination, Scrollbar, A11y]
     }
   }

@@ -24,7 +24,7 @@
     <h3>test git3</h3>-->
 </template>
 <script>
-import { reactive, getCurrentInstance, onMounted, nextTick, ref, onUpdated, watch } from 'vue'
+import { getCurrentInstance, onMounted, nextTick, ref, onUpdated, watch } from 'vue'
 import { useStore } from 'vuex'
 export default {
   props: {
@@ -60,7 +60,7 @@ export default {
       if (proxy.$refs.dataId) {
         dataDom.value = proxy.$refs.dataId.innerText
       }
-      console.log('child Dom', dataDom.value)
+      // console.log('child Dom', dataDom.value)
     })
 
     onUpdated(() => {
@@ -72,14 +72,14 @@ export default {
       })
     })
 
-    const CCC = reactive({
-      id: '10',
-      name: 'tom'
-    })
+    // const CCC = reactive({
+    //   id: '10',
+    //   name: 'tom'
+    // })
 
-    const AAA = reactive(JSON.parse(JSON.stringify(CCC)))
-    console.log('cc', CCC)
-    console.log('aaa', AAA)
+    // const AAA = reactive(JSON.parse(JSON.stringify(CCC)))
+    // console.log('cc', CCC)
+    // console.log('aaa', AAA)
     return {
       changeEve
     }

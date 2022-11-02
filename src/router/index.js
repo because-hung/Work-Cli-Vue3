@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import testB from '../components/testB.vue'
 import TestPage from '../views/TestPage.vue'
+import funcPage from '../views/funcView.vue'
 import TestPageSecond from '../views/TestPageSecond.vue'
 import uiTest from '../views/uiTest.vue'
 
@@ -20,6 +21,11 @@ const routes = [
     path: '/testP',
     name: 'testPage',
     component: TestPage
+  },
+  {
+    path: '/func',
+    name: 'funcPage',
+    component: funcPage
   },
   {
     path: '/testPsec',
