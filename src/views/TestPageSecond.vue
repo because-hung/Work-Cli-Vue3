@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <button type="button" class="btn btn-primary ms-5 mb-2">Primary</button>
+    <h2 class="text-success"> tst tes</h2>
+    <h3 class="border border-2 text-red-500 m-2 py-2">text tai</h3>
     <!-- country
        <div class="nav">
       <div class="country">
@@ -117,6 +120,23 @@ import { fetchFakeApi } from '../../api/fakeApi'
 import { useStore } from 'vuex'
 export default {
   setup () {
+    const arrow = () => {
+      console.log('Hello world, my name is ' + this.name)
+    }
+    arrow() // (1)
+
+    const user = {
+      name: 'Shubo',
+      arrow: () => {
+        console.log('Hello world, my name is ' + this.name)
+      },
+      speak () {
+        arrow()
+      }
+    }
+
+    user.arrow() // (2)
+    user.speak() // (3)
     const openList = ref(false)
     const msg = ref('')
     watch(msg, () => {

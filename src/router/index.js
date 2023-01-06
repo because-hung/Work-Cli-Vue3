@@ -5,6 +5,7 @@ import TestPage from '../views/TestPage.vue'
 import funcPage from '../views/funcView.vue'
 import TestPageSecond from '../views/TestPageSecond.vue'
 import uiTest from '../views/uiTest.vue'
+import eChart from '../views/eChart.vue'
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: '/testUi',
     name: 'testUi',
     component: uiTest
+  },
+  {
+    path: '/chart',
+    name: 'chart',
+    component: eChart
   },
   {
     path: '/about',
