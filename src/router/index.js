@@ -5,13 +5,21 @@ import TestPage from '../views/TestPage.vue'
 import funcPage from '../views/funcView.vue'
 import TestPageSecond from '../views/TestPageSecond.vue'
 import uiTest from '../views/uiTest.vue'
-import eChart from '../views/eChart.vue'
+import eChart from '../views/func/eChart.vue'
+import testInter from '../views/testInter.vue'
+/* 切版 */
+import SassUi from '../views/UI/SassUi.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/testInter',
+    name: 'testInter',
+    component: testInter
   },
   {
     path: '/testb',
@@ -39,7 +47,7 @@ const routes = [
     component: uiTest
   },
   {
-    path: '/chart',
+    path: '/echart',
     name: 'chart',
     component: eChart
   },
@@ -50,6 +58,12 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+  },
+  /* UI */
+  {
+    path: '/sassui',
+    name: 'sassui',
+    component: SassUi
   }
 ]
 

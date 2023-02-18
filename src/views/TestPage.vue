@@ -164,6 +164,7 @@ export default {
     SwiperSlide
   },
   setup () {
+    // swiper, computed(for data)
     const testNum = ref(1)
     const alertG = (val) => {
       alert('success! ' + val)

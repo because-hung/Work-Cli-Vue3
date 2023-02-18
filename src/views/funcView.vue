@@ -4,7 +4,7 @@
     <button class="btn" @click="getResult()">click me</button>
     <button class="btn" @click="getReset">reset</button>
     <ul>
-      <li v-for="(num, i) in data.column" :key="i" :class="{'same': i+1 == num}">{{i + 1}} 號 ----- 送給 ----- {{num}} 號</li>
+      <li v-for="(num, i) in data.column" :key="i" :class="{'same': i+1 == num}">{{i + 1}} 號 ----- 順序 ----- {{num}} </li>
     </ul>
   </div>
 </template>
@@ -13,6 +13,7 @@ import api from '../../api/list.json'
 import { reactive, ref } from '@vue/reactivity'
 export default {
   setup () {
+    // 抽籤程式
     const data = reactive({
       column: []
     })

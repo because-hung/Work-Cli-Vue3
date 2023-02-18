@@ -9,7 +9,7 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
-import eChart from '@/views/eChart.vue'
+import eChart from '@/views/func/eChart.vue'
 
 export default {
   name: 'HomeView',

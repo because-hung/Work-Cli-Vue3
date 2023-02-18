@@ -44,7 +44,7 @@
 import { reactive, ref, getCurrentInstance, onMounted } from 'vue'
 export default {
   setup () {
-  // RegExp
+  // RegExp 驗證, 視窗 click 任意處點擊關掉
     const rex1 = /^[A-Za-z\d]{6,12}$/
     // (?![0-9]+$)
     // 断言此位置之后，字符串结尾之前，所有的字符不能全部由数字组成

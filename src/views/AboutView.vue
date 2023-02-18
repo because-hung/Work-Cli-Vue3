@@ -37,6 +37,8 @@ import { onMounted, reactive, ref } from 'vue'
 import axios from 'axios'
 import { fetchFakeApi } from '../../api/fakeApi'
 
+// slide animated 動畫
+
 const data = ref([])
 const anFlag = ref(0)
 const vvv = ref(0)
