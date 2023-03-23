@@ -1,4 +1,15 @@
 <template >
+  <!-- 滑動表單 -->
+      <div class="container2">
+    <div class="header"> <button id="btn" @click="openS()">enter</button><button id="btn2">close</button></div>
+    <div class="sidebar" id="sr"  :class="{ openSS : sStatus, openSR : !sStatus}">
+      <span>登入/</span>
+      <span>登出</span>
+    </div>
+    <div class="content">
+      <p>認定生命，沒人承受遠程國家大聲很好關係版權戰士遠遠技巧打算一顆樣子，女士產品事務所需，也會合適看不到一臉電影微笑專區創意股東版本發貼，外資自主兩次報名房產適應選手的話位於影片平均研發，快車方向眼裡終。</p>
+    </div>
+  </div>
     <div class="container">
       <div class="outterR">
       <div class="testPo"> //外框
@@ -179,8 +190,15 @@ export default {
       el.addEventListener('mousedown', downE)
       el.addEventListener('mouseup', upE)
     })
+    //
 
+    const sStatus = ref(false)
+    function openS () {
+      sStatus.value = !sStatus.value
+    }
     return {
+      openS,
+      sStatus,
       downE,
       upE,
       countryData,
@@ -343,4 +361,74 @@ background-size: 200px 200px;
   }
 }
 
+// 滑動表單
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.container2{
+  position: relative;
+  overflow: hidden;
+}
+.header{
+  width: 100%;
+  height: 200px;
+  background-color: red;
+  display: flex;
+  justify-content: flex-end;
+  align-items: start;
+  button{
+    width: 50px;
+    height: 30px;
+  }
+}
+.content{
+  width: 100%;
+  height: 800px;
+  background-color: aqua;
+}
+
+.sidebar{
+  width: 300px;
+  height: 500px;
+  background: lightcoral;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  transform: translateX(300px);
+  transition: all .5s;
+
+}
+
+.openSS{
+  transform: translateX(0px);
+
+}
+
+.openSR{
+  transform: translateX(300px);
+}
+
+// @keyframes slide{
+//     from{
+//       transform: translate(300px);
+//     }
+//     to{
+//       transform: translate(0px);
+//     }
+// }
+
+// @keyframes slideR{
+//     from{
+//       transform: translate(0px);
+//     }
+//     to{
+//       transform: translate(300px);
+//     }
+// }
 </style>

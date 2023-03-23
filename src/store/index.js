@@ -4,7 +4,8 @@ export default createStore({
   state: { // 創造狀態 跟改值的動作
     statusS: false, // 創造狀態
     statusA: false,
-    statusV: 0
+    statusV: 0,
+    testNum: 0
   },
   getters: {
     statusV: (state) => state.statusV // 可以 return 狀態
@@ -16,6 +17,9 @@ export default createStore({
     },
     setStatusA (state, payload) {
       state.statusA = payload
+    },
+    setNum (state, payload) {
+      state.testNum = payload
     }
   },
   actions: { // 外層傳值進來
@@ -25,6 +29,10 @@ export default createStore({
     },
     getStatusA (context, payload) {
       context.commit('setStatusA', payload)
+    },
+    getNum (context, payload) {
+      console.log('pay', payload)
+      context.commit('setNum', payload)
     }
   },
   modules: {

@@ -54,6 +54,7 @@
 <button @click="clickA()">A</button>
 <button @click="clickB()">B</button>
 <h2>{{testNum}}</h2>
+<h3>vuex: {{Xnum}}</h3>
   <!-- <p>{{ com }}</p>
 <button @click="count()">change</button>
 <div class="outer">
@@ -158,12 +159,15 @@ import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
 import { reactive, ref, onMounted, watchEffect, computed } from 'vue'
 import { fetchFakeApi } from '../../api/fakeApi'
+import { useStore } from 'vuex'
 export default {
   components: {
     Swiper,
     SwiperSlide
   },
   setup () {
+    const store = useStore()
+    const Xnum = ref(store.state.testNum)
     // swiper, computed(for data)
     const testNum = ref(1)
     const alertG = (val) => {
@@ -311,6 +315,7 @@ export default {
       clickA,
       clickB,
       alertG,
+      Xnum,
       modules: [Navigation, Pagination, Scrollbar, A11y]
     }
   }

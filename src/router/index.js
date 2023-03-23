@@ -5,10 +5,14 @@ import TestPage from '../views/TestPage.vue'
 import funcPage from '../views/funcView.vue'
 import TestPageSecond from '../views/TestPageSecond.vue'
 import uiTest from '../views/uiTest.vue'
-import eChart from '../views/func/eChart.vue'
 import testInter from '../views/testInter.vue'
 /* 切版 */
 import SassUi from '../views/UI/SassUi.vue'
+/* func */
+import eChart from '../views/func/eChart.vue'
+/* components */
+import selectInput from '../views/components/selectInput.vue'
+import dropDown from '../views/components/dropDown.vue'
 
 const routes = [
   {
@@ -47,11 +51,6 @@ const routes = [
     component: uiTest
   },
   {
-    path: '/echart',
-    name: 'chart',
-    component: eChart
-  },
-  {
     path: '/about',
     name: 'about',
     // route level code-splitting
@@ -64,6 +63,23 @@ const routes = [
     path: '/sassui',
     name: 'sassui',
     component: SassUi
+  },
+  /* func */
+  {
+    path: '/echart',
+    name: 'chart',
+    component: eChart
+  },
+  /* components */
+  {
+    path: '/selectInput',
+    name: 'selectInput',
+    component: selectInput
+  },
+  {
+    path: '/dropDown',
+    name: 'dropDown',
+    component: dropDown
   }
 ]
 
@@ -83,7 +99,7 @@ const router = createRouter({
 })
 export default router
 
-// //rework
+// // rework
 // router.afterEach((to, from, next) => {
 // window.scrollTo(0, 0);
 // })

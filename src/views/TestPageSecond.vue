@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h3 @click="changeNum()">vuex: {{Xnum}}</h3>
     <button type="button" class="btn btn-primary ms-5 mb-2">Primary</button>
     <h2 class="text-success"> tst tes</h2>
     <h3 class="border border-2 text-red-500 m-2 py-2">text tai</h3>
@@ -115,28 +116,28 @@
   </div>
 </template>
 <script>
-import { onMounted, reactive, ref, watch } from 'vue'
+import { onMounted, reactive, ref, watch, computed } from 'vue'
 import { fetchFakeApi } from '../../api/fakeApi'
 import { useStore } from 'vuex'
 export default {
   setup () {
-    const arrow = () => {
-      console.log('Hello world, my name is ' + this.name)
-    }
-    arrow() // (1)
+    // const arrow = () => {
+    //   console.log('Hello world, my name is ' + this.name)
+    // }
+    // arrow() // (1)
 
-    const user = {
-      name: 'Shubo',
-      arrow: () => {
-        console.log('Hello world, my name is ' + this.name)
-      },
-      speak () {
-        arrow()
-      }
-    }
+    // const user = {
+    //   name: 'Shubo',
+    //   arrow: () => {
+    //     console.log('Hello world, my name is ' + this.name)
+    //   },
+    //   speak () {
+    //     arrow()
+    //   }
+    // }
 
-    user.arrow() // (2)
-    user.speak() // (3)
+    // user.arrow() // (2)
+    // user.speak() // (3)
     const openList = ref(false)
     const msg = ref('')
     watch(msg, () => {
@@ -210,6 +211,13 @@ export default {
     const newData = []
     const aaa = ref(store.state.statusA)
 
+    function changeNum () {
+      store.dispatch('getNum', 5)
+      // console.log(store.state.testNum)
+    }
+
+    const Xnum = computed(() => store.state.testNum)
+
     function clickme (value) {
       window.location.href = ';mailto:user@example.com?subject=Subject&body=message%20goes%20here'
       store.dispatch('getStatusA', value)
@@ -270,7 +278,9 @@ export default {
       arr,
       obj,
       msg,
-      openList
+      openList,
+      Xnum,
+      changeNum
     }
   }
 }
