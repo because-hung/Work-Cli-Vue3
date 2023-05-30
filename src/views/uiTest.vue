@@ -402,7 +402,6 @@ background-size: 200px 200px;
   right: 0;
   transform: translateX(300px);
   transition: all .5s;
-
 }
 
 .openSS{
